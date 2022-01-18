@@ -1,5 +1,4 @@
 from fastapi import FastAPI
-from . import models
 from .database import engine
 from fastapi.middleware.cors import CORSMiddleware
 from .routers import Oauth, post, users, vote
@@ -29,8 +28,7 @@ app.include_router(users.router)
 app.include_router(Oauth.router)
 app.include_router(vote.router)
 
-app.get("/")
 
-
+@app.get("/")
 def root():
-    return {"hello": "world"}
+    return {"message": "Hello World pushing out to ubuntu"}

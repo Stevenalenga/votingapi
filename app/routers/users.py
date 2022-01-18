@@ -1,13 +1,18 @@
 from fastapi import FastAPI, Response, status, HTTPException, Depends, APIRouter
 from sqlalchemy.orm import Session
-from .. import models, schemas, utils, Oauth2
-from..database import engine, get_db
+from .. import models, schemas, utils
+from ..database import get_db
+from passlib.context import CryptContext
 
+pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 router = APIRouter(
     prefix="/user",
-    tags=["users"]
+    tags=['User']
 )
+
+# /users/
+# /users
 
 
 @router.get("/")
@@ -16,9 +21,9 @@ def user():
 
 
 @router.post("/", status_code=status.HTTP_201_CREATED, response_model=schemas.UserOut)
-def Create_user(user: schemas.UserCreate, db: Session = Depends(get_db), current_user: int = Depends(Oauth2.get_current_user)):
+def Create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
     # hash password = userpassword
-    hashed_password = utils.hash(user.password)
+    hashed_password = pwd_context.hash(user.password)
     user.password = hashed_password
 
     new_user = models.User(**user.dict())
