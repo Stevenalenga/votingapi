@@ -13,6 +13,7 @@ origins = [
     "https://youtube.com",
     "http://myapp.com",
     "http://localhost:5341",
+    "https://alengapi.herokuapp.com/"
 ]
 
 app.add_middleware(
