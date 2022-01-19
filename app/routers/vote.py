@@ -10,6 +10,7 @@ router = APIRouter(
     prefix="/vote",
     tags=['Vote']
 )
+# vote
 
 
 @router.post("/", status_code=status.HTTP_201_CREATED)
