@@ -188,6 +188,8 @@ def get_User(id: int, db: Session = Depends(get_db)):
         return {"message": f"post with {id} was not found"}
     return user
 
+# login user
+
 
 @app.post('/login', response_model=schemas.Token)
 def login(user_credentials: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(get_db)):
