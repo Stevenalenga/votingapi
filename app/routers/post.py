@@ -12,6 +12,7 @@ router = APIRouter(
     prefix="/posts",
     tags=['Posts']
 )
+# posts
 
 
 # @router.get("/", response_model=List[schemas.Post])
