@@ -9,11 +9,7 @@ from .routers import Oauth, post, users, vote
 app = FastAPI()
 
 origins = [
-    "https://google.com",
-    "https://youtube.com",
-    "http://myapp.com",
-    "http://localhost:5341",
-    "https://alengapi.herokuapp.com/"
+    "*"
 ]
 
 app.add_middleware(
