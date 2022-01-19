@@ -189,6 +189,7 @@ def get_User(id: int, db: Session = Depends(get_db)):
     return user
 
 # login user
+# /logins
 
 
 @app.post('/login', response_model=schemas.Token)
